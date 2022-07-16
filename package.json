@@ -1,6 +1,6 @@
 {
   "name": "@jspawn/pdfr-wasm",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "pdfr compiled to WASM",
   "main": "pdfr.js",
   "module": "pdfr.mjs",
