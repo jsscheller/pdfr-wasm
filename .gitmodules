@@ -7,3 +7,6 @@
 [submodule "lib/pdfr"]
 	path = lib/pdfr
 	url = https://github.com/jsscheller/pdfr
+[submodule "lib/libjpeg-turbo"]
+	path = lib/libjpeg-turbo
+	url = https://github.com/libjpeg-turbo/libjpeg-turbo

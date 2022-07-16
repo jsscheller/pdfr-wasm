@@ -21,6 +21,21 @@ export CXXFLAGS="$CFLAGS"
 
 mkdir -p "$OUT_DIR"
 
+cd "$ROOT/lib/libjpeg-turbo"
+fn_git_clean
+# https://github.com/libjpeg-turbo/libjpeg-turbo/issues/250#issuecomment-407615180
+emcmake cmake \
+  -B_build \
+  -H. \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_INSTALL_PREFIX="$OUT_DIR" \
+  -DENABLE_STATIC=TRUE \
+  -DENABLE_SHARED=FALSE \
+  -DWITH_JPEG8=TRUE \
+  -DWITH_SIMD=FALSE \
+  -DWITH_TURBOJPEG=FALSE
+emmake make -C _build install
+
 # inspired by https://github.com/bblanchon/pdfium-binaries
 cd "$ROOT/lib/pdfium"
 export PATH="$PATH:/src/lib/depot_tools"
@@ -60,11 +75,11 @@ emcc -c gxx_personality_v0_stub.cpp
 mkdir -p "$ROOT/dist"
 cd "$ROOT/lib/pdfr"
 export BINDGEN_EXTRA_CLANG_ARGS="$CPPFLAGS"
+# TODO: using closure results in `Assertion failed: undefined` being logged
 export RUSTFLAGS=\
 "-Clink-arg=$OUT_DIR/gxx_personality_v0_stub.o "\
 "-Clink-arg=--pre-js=$ROOT/js/pre.js "\
 "-Clink-arg=--post-js=$ROOT/js/post.js "\
-"-Clink-arg=--closure=1 "\
 "-Clink-arg=-sWASM_BIGINT=1 "\
 "-Clink-arg=-sEXIT_RUNTIME=0 "\
 "-Clink-arg=-sALLOW_MEMORY_GROWTH=1 "\
