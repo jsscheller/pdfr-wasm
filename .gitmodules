@@ -1,0 +1,9 @@
+[submodule "lib/pdfium"]
+	path = lib/pdfium
+	url = https://github.com/chromium/pdfium.git
+[submodule "lib/depot_tools"]
+	path = lib/depot_tools
+	url = https://chromium.googlesource.com/chromium/tools/depot_tools.git
+[submodule "lib/pdfr"]
+	path = lib/pdfr
+	url = https://github.com/jsscheller/pdfr

@@ -1,0 +1,19 @@
+{
+  "name": "@jspawn/pdfr-wasm",
+  "version": "0.0.1",
+  "description": "pdfr compiled to WASM",
+  "main": "pdfr.js",
+  "module": "pdfr.mjs",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha.js tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jsscheller/pdfr-wasm.git"
+  },
+  "license": "(MIT OR Apache-2.0)",
+  "devDependencies": {
+    "mocha": "^10.0.0"
+  },
+  "dependencies": {}
+}
